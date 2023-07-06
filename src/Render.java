@@ -11,23 +11,22 @@ class Render {
      */
     public void showIndicator(Object object) {
         // Ќе должно быть упоминани€ конкретных классов!!!
-        int curHP = (((healthbar) object).currentHealthPoint());
-        int maxHP = (((healthbar) object).maxHealthPoint());
-        int curMP = (((manapool) object).currentManaPoint());
-        int maxMP = (((manapool) object).maxManaPoint());
         String indicator = "#";
-        if (curHP<=maxHP/10*3){
-            indicator = Homework.ANSI_RED + "#" + Homework.ANSI_RESET;
-        } else if (curHP<=maxHP/10*6) {
-            indicator = Homework.ANSI_YELLOW + "#" + Homework.ANSI_RESET;
-        } else {
-            indicator = Homework.ANSI_GREEN + "#" + Homework.ANSI_RESET;
-        }
 //        float percentageOfHP = curHP / maxHP;
 //        float percentageOfMP = curMP / maxMP;
         List<String> Hp = new ArrayList<>();
         List<String> Mp = new ArrayList<>();
         if (object instanceof healthbar) {
+            int curHP = (((healthbar) object).currentHealthPoint());
+            int maxHP = (((healthbar) object).maxHealthPoint());
+
+            if (curHP <= maxHP / 10 * 3) {
+                indicator = Homework.ANSI_RED + "#" + Homework.ANSI_RESET;
+            } else if (curHP <= maxHP / 10 * 6) {
+                indicator = Homework.ANSI_YELLOW + "#" + Homework.ANSI_RESET;
+            } else {
+                indicator = Homework.ANSI_GREEN + "#" + Homework.ANSI_RESET;
+            }
             for (int i = 0; i < maxHP / 10; i++) {
                 if (i < curHP / 10) {
                     Hp.add(indicator);
@@ -44,15 +43,17 @@ class Render {
 //                    (((healthbar) object).currentHealthPoint()),
 //                    (((healthbar) object).maxHealthPoint()));
         }
-        indicator = Homework.ANSI_RESET + "#";
-        if (curMP<=maxMP/10*3){
-            indicator = Homework.ANSI_PURPLE + "#" + Homework.ANSI_RESET;
-        } else if (curMP<=maxMP/10*6) {
-            indicator = Homework.ANSI_CYAN + "#" + Homework.ANSI_RESET;
-        } else {
-            indicator = Homework.ANSI_BLUE + "#" + Homework.ANSI_RESET;
-        }
         if (object instanceof manapool) {
+            int curMP = (((manapool) object).currentManaPoint());
+            int maxMP = (((manapool) object).maxManaPoint());
+            indicator = Homework.ANSI_RESET + "#";
+            if (curMP <= maxMP / 10 * 3) {
+                indicator = Homework.ANSI_PURPLE + "#" + Homework.ANSI_RESET;
+            } else if (curMP <= maxMP / 10 * 6) {
+                indicator = Homework.ANSI_CYAN + "#" + Homework.ANSI_RESET;
+            } else {
+                indicator = Homework.ANSI_BLUE + "#" + Homework.ANSI_RESET;
+            }
             for (int i = 0; i < maxMP / 10; i++) {
                 if (i < curMP / 10) {
                     Mp.add(indicator);
