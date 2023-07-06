@@ -15,6 +15,14 @@ class Render {
         int maxHP = (((healthbar) object).maxHealthPoint());
         int curMP = (((manapool) object).currentManaPoint());
         int maxMP = (((manapool) object).maxManaPoint());
+        String indicator = "#";
+        if (curHP<=maxHP/10*3){
+            indicator = Homework.ANSI_RED + "#" + Homework.ANSI_RESET;
+        } else if (curHP<=maxHP/10*6) {
+            indicator = Homework.ANSI_YELLOW + "#" + Homework.ANSI_RESET;
+        } else {
+            indicator = Homework.ANSI_GREEN + "#" + Homework.ANSI_RESET;
+        }
 //        float percentageOfHP = curHP / maxHP;
 //        float percentageOfMP = curMP / maxMP;
         List<String> Hp = new ArrayList<>();
@@ -22,7 +30,7 @@ class Render {
         if (object instanceof healthbar) {
             for (int i = 0; i < maxHP / 10; i++) {
                 if (i < curHP / 10) {
-                    Hp.add("#");
+                    Hp.add(indicator);
                 } else {
                     Hp.add(" ");
                 }
@@ -36,10 +44,18 @@ class Render {
 //                    (((healthbar) object).currentHealthPoint()),
 //                    (((healthbar) object).maxHealthPoint()));
         }
+        indicator = Homework.ANSI_RESET + "#";
+        if (curMP<=maxMP/10*3){
+            indicator = Homework.ANSI_PURPLE + "#" + Homework.ANSI_RESET;
+        } else if (curMP<=maxMP/10*6) {
+            indicator = Homework.ANSI_CYAN + "#" + Homework.ANSI_RESET;
+        } else {
+            indicator = Homework.ANSI_BLUE + "#" + Homework.ANSI_RESET;
+        }
         if (object instanceof manapool) {
             for (int i = 0; i < maxMP / 10; i++) {
                 if (i < curMP / 10) {
-                    Mp.add("#");
+                    Mp.add(indicator);
                 } else {
                     Mp.add(" ");
                 }
@@ -52,7 +68,9 @@ class Render {
 //                    (((manapool) object).currentManaPoint()),
 //                    (((manapool) object).maxManaPoint()));
     }
-
+/**
+ *  indicator перезаписывается для отображения маны перезапись не происходит параллельно
+ */
 }
 
 

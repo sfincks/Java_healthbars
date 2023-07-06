@@ -5,8 +5,8 @@ public class Main {
 //        Building building = new Building(100);
 //        building.setCurrentHealthPoint(50);
         Hero hero = new Hero(100,100);
-        hero.setCurrentHealthPoint(50);
-        hero.setCurrentManaPoint(30);
+        hero.setCurrentHealthPoint(70);
+        hero.setCurrentManaPoint(70);
 
         render.showIndicator(hero); // ¬ консоли должно быть примерно так: “екущий уровень здоровь€: 50, максимальный уровень здоровь€: 100
 
